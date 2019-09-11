@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // After receiving Notification from NotificationReceiver, we send the order to OrderAsyncTask
     @Override
     protected void onNewIntent(Intent intent) {
         Log.d(TAG, "onNewIntent");
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         new OrderAsyncTask().execute(orderId);
     }
 
+    // Fetches and logs merchant account details
     private class GetAccountDetails extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... params) {
@@ -89,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    // Prints order ID passed in from NotificationReceiver
     private class OrderAsyncTask extends AsyncTask<String, Void, Order> {
         Order order;
 
